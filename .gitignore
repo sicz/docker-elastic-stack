@@ -1,0 +1,10 @@
+# https://git-scm.com/docs/gitignore
+
+# Ignore backup files
+*~
+
+# Info about running containers
+.docker-*
+
+# Ignore custom Docker Compose file
+docker-compose.local.yml

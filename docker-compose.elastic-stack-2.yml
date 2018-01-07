@@ -1,0 +1,17 @@
+###
+### Elastic Stack
+###
+
+version: "3.3"
+
+services:
+  es:
+    environment:
+      # Elasticsearch 2 does not have bootstrap checks
+      - discovery.type=
+
+  ls:
+    command:
+      --allow-env
+      -w 2
+      -f pipeline/*.conf
