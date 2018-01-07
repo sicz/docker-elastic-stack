@@ -5,10 +5,10 @@
 **This project is not aimed at public consumption.
 It exists to serve as a single endpoint for SICZ containers.**
 
-[Elastic Stack](https://elastic.co) is reliably and securely take data from any
+[Elastic Stack](https://elastic.co) reliably and securely take data from any
 source, in any format, and search, analyze, and visualize it in real time.
 
-This project brings playground to experiment with full Elastic Stack. simple
+This project brings playground to experiment with full Elastic Stack. Simple
 copy your Logstash configuration to `logstash` directory, publish logstash input
 ports in `docker-compose.local.yml` and run Elastic Stack with command `make up`.
 
