@@ -9,8 +9,8 @@ It exists to serve as a single endpoint for SICZ containers.**
 source, in any format, and search, analyze, and visualize it in real time.
 
 This project brings playground to experiment with full Elastic Stack. simple
-copy your Logstash configuration to `logstash/pipeline` directory and run Elastic
-Stack with `make up`
+copy your Logstash configuration to `logstash` directory, publish logstash input
+ports in `docker-compose.local.yml` and run Elastic Stack with command `make up`.
 
 ## Contents
 
@@ -74,8 +74,20 @@ Ports:
 
 ## Deployment
 
-Copy your Logstash filter configuration to `logstash/pipeline   ` directory and run
-command `make up`. Then you can point your browser to Kibana on TCP port 5601.
+Copy your Logstash filter configuration to `logstash` directory and publish
+logstash input ports in `docker-compose.local.yml`, for example:
+```yaml
+version: "3.3"
+
+services:
+  ls:
+    ports:
+      - 5514:514/udp
+      - 5514:514/tcp
+      - 5044:5044/tcp
+```
+Run Elastic Stack with command `make up` and point your browser to Kibana on
+TCP port 5601.
 
 ## Authors
 
