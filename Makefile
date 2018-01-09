@@ -19,7 +19,8 @@ DOCKER_VARIANTS		+= 2.4.6 \
 # Make targets propagated to all Docker image variants
 DOCKER_VARIANT_TARGETS	+= ci \
 			   clean \
-			   docker-pull
+			   docker-pull-dependencies \
+			   docker-pull-testimage
 
 ### MAKE_TARGETS ###############################################################
 
