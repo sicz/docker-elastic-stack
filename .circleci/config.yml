@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: sicz/dockerspec
+    environment:
+      - MAKEFLAGS=--no-print-directory
+      - RSPEC_FORMAT=doc
+    steps:
+      - checkout
+      - run:
+          name: Checkout make files
+          command: |
+            cd ..
+            curl -sSL https://github.com/SICZ/Mk/archive/master.tar.gz | tar -xzf -
+            mv Mk-master Mk
+      - setup_remote_docker:
+          version: 17.06.0-ce
+      - run:
+          name: Pull Docker images
+          command: |
+            make docker-pull-dependencies
+            make docker-pull-testimage
+      - run:
+          name: sicz/elastic-stack:latest
+          command: |
+            make ci
