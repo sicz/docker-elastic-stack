@@ -49,8 +49,11 @@ endif
 endif
 
 # Variables used in the Docker Compose file
-COMPOSE_VARS		+= ELASTICSEARCH_IMAGE \
+COMPOSE_VARS		+= ELASTICSEARCH_VERSION \
+			   ELASTICSEARCH_IMAGE \
+			   KIBANA_VERSION \
 			   KIBANA_IMAGE \
+			   LOGSTASH_VERSION \
 			   LOGSTASH_IMAGE
 
 ### MAKE_VARS ##################################################################
@@ -104,6 +107,11 @@ run up: docker-up
 # Create the containers
 .PHONY: create
 create: docker-create
+	@CONF_FILES="`find $(PROJECT_DIR)/logstash -type f -name '*.conf' -depth 1 | wc -l`"; \
+	if [ $${CONF_FILES} -eq 0 ]; then \
+		echo "Installing default logstash/logstash.conf"; \
+		cp $(TEST_DIR)/spec/fixtures/logstash/logstash.conf $(PROJECT_DIR)/logstash; \
+	fi
 
 # Start the containers
 .PHONY: start

@@ -81,7 +81,13 @@ services:
     environment:
       - DOCKER_ENTRYPOINT_DEBUG=true
       - DOCKER_ENTRYPOINT_INFO=true
-      - WAIT_FOR_TCP=es.local:9200 kb.local:5601
+      - ELASTICSEARCH_CONTAINER=${COMPOSE_PROJECT_NAME}_es_1
+      - KIBANA_CONTAINER=${COMPOSE_PROJECT_NAME}_kb_1
+      - LOGSTASH_CONTAINER=${COMPOSE_PROJECT_NAME}_ls_1
+      - ELASTICSEARCH_URL=http://es.local:9200
+      - KIBANA_URL=http://kb.local:5601
+      - LOGSTASH_URL=tcp://ls.local:5514
+      - WAIT_FOR_TCP=es.local:9200 kb.local:5601 ls.local:5514
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       # Use project dir as host volume for debugging tests if Docker host is local
