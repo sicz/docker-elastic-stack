@@ -22,6 +22,12 @@ jobs:
             make docker-pull-dependencies
             make docker-pull-testimage
       - run:
-          name: sicz/elastic-stack:latest
+          name: sicz/elastic-stack:2.4.6
+          working_directory: 2.4.6
+          command: |
+            make ci
+      - run:
+          name: sicz/elastic-stack:6.1.1
+          working_directory: 6.1.1
           command: |
             make ci
