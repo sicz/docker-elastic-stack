@@ -107,7 +107,7 @@ run up: docker-up
 # Create the containers
 .PHONY: create
 create: docker-create
-	@CONF_FILES="`find $(PROJECT_DIR)/logstash -type f -name '*.conf' -depth 1 | wc -l`"; \
+	@CONF_FILES="`find $(PROJECT_DIR)/logstash -type f -name '*.conf' | wc -l`"; \
 	if [ $${CONF_FILES} -eq 0 ]; then \
 		echo "Installing default logstash/logstash.conf"; \
 		cp $(TEST_DIR)/spec/fixtures/logstash/logstash.conf $(PROJECT_DIR)/logstash; \
