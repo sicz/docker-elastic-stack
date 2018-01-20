@@ -27,7 +27,7 @@ jobs:
           command: |
             make ci
       - run:
-          name: sicz/elastic-stack:6.1.1
-          working_directory: 6.1.1
+          name: sicz/elastic-stack:6.1.2
+          working_directory: 6.1.2
           command: |
             make ci

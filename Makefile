@@ -14,7 +14,7 @@ SHELL			+= -e
 
 # Docker image variants
 DOCKER_VARIANTS		+= 2.4.6 \
-			   6.1.1
+			   6.1.2
 
 # Make targets propagated to all Docker image variants
 DOCKER_VARIANT_TARGETS	+= ci \
